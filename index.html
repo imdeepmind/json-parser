@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <textarea id="input" placeholder="Input"></textarea>
+  <button onclick="handleData();">Process</button>
+  <textarea id="output" placeholder="output" readonly></textarea>
+  <script>
+    const handleData = () => {
+      const inputField = document.getElementById("input");
+      const outputField = document.getElementById("output");
+
+      const inputFieldValue = inputField.value;
+
+      if (inputFieldValue) {
+        const parsedValue = JSON.parse(inputFieldValue);
+
+        const names = parsedValue.data && parsedValue.data.length > 0 && parsedValue.data.map(val => {
+          return val.name;
+        });
+
+        const joinedName = names.join("\n");
+
+        outputField.value = joinedName;
+      }
+
+    }
+  </script>
+</body>
+</html>
